@@ -1,3 +1,13 @@
+请把项目里的 embedding_engine.py 整个文件替换成下面这个新版本（用于把 Gemini 向量调用从 OpenAI 兼容接口改成 Google 原生接口，用 ?key= 认证，兼容 AIza 和 AQ. 两种 key）。
+
+要求：
+1. 用下面的内容【完整覆盖】 embedding_engine.py，保持 UTF-8 编码、LF 换行。
+2. 不要删掉 find_similar_buckets 方法（server.py 依赖它）。
+3. 替换后运行 `python -m py_compile embedding_engine.py` 确认能编译通过。
+4. 不要改动其他任何文件。
+
+新版 embedding_engine.py 完整内容如下：
+
 # ============================================================
 # Module: Embedding Engine (embedding_engine.py)
 # 模块：向量化引擎
@@ -330,3 +340,5 @@ class EmbeddingEngine:
         if norm_a == 0 or norm_b == 0:
             return 0.0
         return dot / (norm_a * norm_b)
+
+替换并编译通过后，请提交并推送这个改动。
